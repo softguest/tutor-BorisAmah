@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boris Amah | Tutor Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00f0ff',
+                        secondary: '#ff00f0',
+                        dark: '#0a0a1a',
+                        light: '#f0f0ff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        
+        body {
+            background-color: #0a0a1a;
+            color: #f0f0ff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #00f0ff, #ff00f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 240, 255, 0.1), 0 10px 10px -5px rgba(0, 240, 255, 0.04);
+        }
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00f0ff, #ff00f0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold gradient-text">BORIS AMAH</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#expertise" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Expertise</a>
+                        <a href="#testimonials" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Testimonials</a>
+                        <a href="#achievements" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Achievements</a>
+                        <a href="#experience" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-light hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 backdrop-blur-lg border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-light hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="text-light hover:text-primary block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#expertise" class="text-light hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Expertise</a>
+                <a href="#testimonials" class="text-light hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
+                <a href="#achievements" class="text-light hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Achievements</a>
+                <a href="#experience" class="text-light hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                    Empowering Students <br>
+                    <span class="gradient-text">With Skills in Technology</span>
+                </h1>
+                <p class="text-lg text-gray-300 max-w-lg">
+                    Welcome to Turing Portfolio, where I, Boris Amah, leverage expert knowledge to guide students and support schools in IT excellence.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-full font-medium text-dark hover:opacity-90 transition-opacity">
+                        Get In Touch
+                    </a>
+                    <a href="#about" class="px-8 py-3 border border-primary rounded-full font-medium text-primary hover:bg-primary/10 transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="hexagon w-64 h-72 md:w-80 md:h-96 mx-auto bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center animate-float">
+                    <div class="hexagon w-60 h-68 md:w-76 md:h-92 bg-dark flex items-center justify-center">
+                        <img src="./img/profile2-1024x800.jpg" alt="Boris Amah" class="hexagon w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 -left-10 w-24 h-24 rounded-full bg-secondary/20 blur-xl"></div>
+                <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/20 blur-xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dark/50 rounded-3xl my-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    <span class="gradient-text">Meet Boris Amah</span>
+                </h2>
+                <p class="text-gray-300 mb-4">
+                    I am Boris Amah, a seasoned Full Stack Software Developer and Cisco Network Systems tutor with a rich background in IT and over a decade of experience.
+                </p>
+                <p class="text-gray-300 mb-4">
+                    I began my journey at the University of Landmark Bamenda in 2014, guiding students through CCNA Route and Switch to ensure their certification readiness.
+                </p>
+                <p class="text-gray-300">
+                    Throughout my career, I have successfully transitioned to online tutoring, connecting with tech enthusiasts eager to acquire new skills. Currently, at Bitsvalley Douala since 2021, I mentor on web development and oversee project executions, leveraging my vast experience and certifications to support schools through SAAS applications for enhanced operational efficiency and student achievement.
+                </p>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-80 md:w-80 md:h-96 bg-gradient-to-br from-primary to-secondary rounded-2xl p-1">
+                        <div class="w-full h-full bg-dark rounded-xl overflow-hidden">
+                            <img src="./img/profile2-1024x800.jpg" alt="Boris Amah" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-dark border-2 border-primary rounded-xl p-4 shadow-lg">
+                        <div class="flex items-center">
+                            <div class="bg-primary rounded-full p-2 mr-3">
+                                <i class="fas fa-award text-dark text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-light">10+ Years</p>
+                                <p class="text-gray-400 text-sm">Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">Areas of Expertise</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Leveraging a decade of experience to deliver exceptional results in technology education and development
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Expertise 01 -->
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-8 card-hover">
+                <div class="text-5xl font-bold gradient-text mb-4">01</div>
+                <h3 class="text-xl font-bold mb-4">Full Stack Development</h3>
+                <p class="text-gray-400 mb-6">
+                    I possess a comprehensive understanding of both front-end and back-end software development, allowing me to comprehensively guide students in building web applications.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-primary mr-3"></div>
+                        <span class="text-gray-300">Customized Applications</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-primary mr-3"></div>
+                        <span class="text-gray-300">User-Centric Design</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-primary mr-3"></div>
+                        <span class="text-gray-300">Seamless Integration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expertise 02 -->
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-8 card-hover">
+                <div class="text-5xl font-bold gradient-text mb-4">02</div>
+                <h3 class="text-xl font-bold mb-4">Cisco Network Systems</h3>
+                <p class="text-gray-400 mb-6">
+                    My Cisco certifications, including CCNA (route/switch), CCNP (Route/Switch), and My Understanding of the AWS Cloud solidify my understanding of networking fundamentals and advanced technologies.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-secondary mr-3"></div>
+                        <span class="text-gray-300">Robust Architecture</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-secondary mr-3"></div>
+                        <span class="text-gray-300">Data Protection</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-secondary mr-3"></div>
+                        <span class="text-gray-300">Efficient Routing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expertise 03 -->
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-8 card-hover">
+                <div class="text-5xl font-bold gradient-text mb-4">03</div>
+                <h3 class="text-xl font-bold mb-4">SaaS Development</h3>
+                <p class="text-gray-400 mb-6">
+                    Beyond technical skills, I'm a strong proponent of SaaS solutions for educational institutions. I believe these tools can streamline school operations, optimize workflows, and ultimately enhance student performance.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-primary mr-3"></div>
+                        <span class="text-gray-300">Personalized Coaching</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-primary mr-3"></div>
+                        <span class="text-gray-300">System Design</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-primary mr-3"></div>
+                        <span class="text-gray-300">Support & Maintenance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dark/50 rounded-3xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">Student Testimonials</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Hear from students who have benefited from my guidance and mentorship
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-dark border border-gray-800 rounded-2xl overflow-hidden card-hover">
+                <div class="relative pt-[56.25%]">
+                    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/fnXPtwI6sZo?si=GmhEDYknUGxiF_pa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/fnXPtwI6sZo?si=GmhEDYknUGxiF_pa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">John Doe</h3>
+                    <p class="text-gray-400 mb-4">"Boris made complex topics simple to understand."</p>
+                    <a href="https://github.com" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                        <span>View Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-dark border border-gray-800 rounded-2xl overflow-hidden card-hover">
+                <div class="relative pt-[56.25%]">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Y0mKaEiYfv4?si=uoZ0kGmjkFMrlCPD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Jane Smith</h3>
+                    <p class="text-gray-400 mb-4">"Exceptional mentor with real-world insights."</p>
+                    <a href="https://github.com" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                        <span>View Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-dark border border-gray-800 rounded-2xl overflow-hidden card-hover">
+                <div class="relative pt-[56.25%]">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/4p9dFwx0PeQ?si=0zUFiHRr4190Y9hb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Mike Johnson</h3>
+                    <p class="text-gray-400 mb-4">"Passed my CCNA thanks to Boris's methods."</p>
+                    <a href="https://github.com" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                        <span>View Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Testimonial 4 -->
+            <div class="bg-dark border border-gray-800 rounded-2xl overflow-hidden card-hover">
+                <div class="relative pt-[56.25%]">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OE7ayN3SD4I?si=UZx8wLmDU3moO5rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Focho Mukom Ransome</h3>
+                    <p class="text-gray-400 mb-4">"Hi My name is Focho Mukom Ransome a level three student of IUG Douala. I am currently taking my internship at Bitsvalley Douala and here is my review."</p>
+                    <a href="https://github.com" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                        <span>View Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Testimonial 5 -->
+            <div class="bg-dark border border-gray-800 rounded-2xl overflow-hidden card-hover">
+                <div class="relative pt-[56.25%]">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/a6jNDJO0R40?si=un8SxjUnaunMIYN1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Soko Jared</h3>
+                    <p class="text-gray-400 mb-4">"Hi My name is Soko Jared a level Two student of IUGET Douala. I am currently taking my internship at Bitsvalley Douala and here is my review."</p>
+                    <a href="https://github.com" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                        <span>View Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Testimonial 6 -->
+            <div class="bg-dark border border-gray-800 rounded-2xl overflow-hidden card-hover">
+                <div class="relative pt-[56.25%]">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/69dB9Xhx4EM?si=pk82GlKV_Y5dSNQu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Mary Gladys</h3>
+                    <p class="text-gray-400 mb-4">"Hi My name is Mary Gladys a level three student of IUGET Douala. I am currently taking my internship at Bitsvalley Douala and here is my review."</p>
+                    <a href="https://github.com" class="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                        <span>View Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Achievements -->
+    <section id="achievements" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">Academic Achievements</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Recognitions and certifications that validate my expertise
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-certificate text-primary text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">CCNA Certified</h3>
+                <p class="text-gray-400">Cisco Certified Network Associate</p>
+            </div>
+            
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-certificate text-secondary text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">CCNP Certified</h3>
+                <p class="text-gray-400">Cisco Certified Network Professional</p>
+            </div>
+            
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-cloud text-primary text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">AWS Cloud</h3>
+                <p class="text-gray-400">Amazon Web Services</p>
+            </div>
+            
+            <div class="bg-dark/50 border border-gray-800 rounded-2xl p-6 flex flex-col items-center text-center card-hover">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-laptop-code text-secondary text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Full Stack Dev</h3>
+                <p class="text-gray-400">Spring Boot & Reactjs, Nextjs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects & Services -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dark/50 rounded-3xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">Educational Projects & Services</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Solutions designed to enhance learning and institutional efficiency
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-dark border border-gray-800 rounded-2xl p-8 card-hover">
+                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Student LMS</h3>
+                <p class="text-gray-400 mb-6">
+                    A comprehensive Learning Management System tailored for educational institutions to track student progress and deliver content.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Node.js</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+                </div>
+            </div>
+            
+            <div class="bg-dark border border-gray-800 rounded-2xl p-8 card-hover">
+                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-network-wired text-secondary text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Network Simulator</h3>
+                <p class="text-gray-400 mb-6">
+                    A virtual environment for students to practice Cisco networking configurations without physical hardware.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">Cisco IOS</span>
+                    <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">Python</span>
+                    <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">Docker</span>
+                </div>
+            </div>
+            
+            <div class="bg-dark border border-gray-800 rounded-2xl p-8 card-hover">
+                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-school text-primary text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">School ERP</h3>
+                <p class="text-gray-400 mb-6">
+                    Enterprise Resource Planning system designed specifically for educational institutions to manage all operations.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Laravel</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Vue.js</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MySQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">A Decade of Experience</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                My professional journey through the years
+            </p>
+        </div>
+        
+        <div class="relative max-w-3xl mx-auto">
+            <!-- Timeline item 1 -->
+            <div class="relative pl-8 sm:pl-16 py-6 group">
+                <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-gray-700 before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-4 after:h-4 after:bg-primary after:rounded-full after:border-4 after:border-dark after:-translate-x-1/2 after:translate-y-1.5">
+                    <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-primary bg-primary/10 rounded-full">2014-2016</time>
+                    <div class="text-xl font-bold text-light">Network Tutor</div>
+                </div>
+                <div class="text-gray-400">
+                    <p>My role at the institution was to train students on cisco networking and prepare them for the cisco Network Associate Exams.</p>
+                    <div class="flex mt-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline item 2 -->
+            <div class="relative pl-8 sm:pl-16 py-6 group">
+                <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-gray-700 before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-4 after:h-4 after:bg-secondary after:rounded-full after:border-4 after:border-dark after:-translate-x-1/2 after:translate-y-1.5">
+                    <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-secondary bg-secondary/10 rounded-full">2021-Present</time>
+                    <div class="text-xl font-bold text-light">Tutor & Software Developer</div>
+                </div>
+                <div class="text-gray-400">
+                    <p>My current role as a Tutor and full-stack developer at Bitsvalley is to train new IT Trainees and take part in the development of company applications.</p>
+                    <div class="flex mt-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline item 3 -->
+            <div class="relative pl-8 sm:pl-16 py-6 group">
+                <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-gray-700 before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-4 after:h-4 after:bg-primary after:rounded-full after:border-4 after:border-dark after:-translate-x-1/2 after:translate-y-1.5">
+                    <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-primary bg-primary/10 rounded-full">2017-Present</time>
+                    <div class="text-xl font-bold text-light">Software Developer</div>
+                </div>
+                <div class="text-gray-400">
+                    <p>Developing full-stack applications since 2017. My creations cover a wild range of web applications including Business, Portfolio, Blogs, Ecommerce, Sports, and Organization Applications.</p>
+                    <div class="flex mt-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline item 4 -->
+            <div class="relative pl-8 sm:pl-16 py-6 group">
+                <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-gray-700 before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-4 after:h-4 after:bg-secondary after:rounded-full after:border-4 after:border-dark after:-translate-x-1/2 after:translate-y-1.5">
+                    <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-secondary bg-secondary/10 rounded-full">2017-Present</time>
+                    <div class="text-xl font-bold text-light">Software Solutions</div>
+                </div>
+                <div class="text-gray-400">
+                    <p>Boris's software solutions have revolutionized our operations, seamless and reliable.</p>
+                    <div class="flex mt-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dark/50 rounded-3xl mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    <span class="gradient-text">Get In Touch</span>
+                </h2>
+                <p class="text-gray-400 mb-8 max-w-lg">
+                    Interested in working together or have questions about my services? Feel free to reach out!
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 rounded-lg p-3 mr-4">
+                            <i class="fas fa-envelope text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-light mb-1">Email</h4>
+                            <a href="mailto:contact@borisamah.com" class="text-gray-400 hover:text-primary transition-colors">subjectspot@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-secondary/10 rounded-lg p-3 mr-4">
+                            <i class="fas fa-phone-alt text-secondary text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-light mb-1">Phone</h4>
+                            <a href="tel:+1234567890" class="text-gray-400 hover:text-secondary transition-colors">+237 6 73 58 99 99</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 rounded-lg p-3 mr-4">
+                            <i class="fab fa-linkedin-in text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-light mb-1">LinkedIn</h4>
+                            <a href="https://linkedin.com" class="text-gray-400 hover:text-primary transition-colors">linkedin.com/in/borisamah</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+                <form class="space-y-6" method="POST" action="./php/send-email.php">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                        <input name="name" type="text" id="name" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                        <input name="email" type="email" id="email" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                        <textarea name="message" id="message" rows="4" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-medium text-dark hover:opacity-90 transition-opacity">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-800">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold gradient-text mb-4">BORIS AMAH</h3>
+                <p class="text-gray-400">
+                    Empowering students with skills in technology through expert guidance and innovative solutions.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-light mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#expertise" class="text-gray-400 hover:text-primary transition-colors">Expertise</a></li>
+                    <li><a href="#experience" class="text-gray-400 hover:text-primary transition-colors">Experience</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-light mb-4">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-dark border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-dark border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-dark border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-dark border border-gray-700 rounded-full flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+            <p>© 2023 Boris Amah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
